@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <math.h>
+
+double solve(double x){
+
+	double result;
+	for (int i = 0; i < n; i++){
+		result += sin(solve(x));
+		}
+	return result;
+}
+
+
+
+int main(){
+
+double x0;
+int n0;
+double result0;
+
+printf("Enter X\n");
+scanf("%lf", &x0);
+
+printf("Enter N\n");
+scanf("%lf", &n0);
+
+
+result0 = solve(n0, x0);
+printf("%.4f\n", result0);
+
+
+
+
+
+
+
+
+}
