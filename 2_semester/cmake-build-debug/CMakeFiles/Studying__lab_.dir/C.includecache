@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/perseusf/Desktop/Studying (lab)/array.h
+stdlib.h
+-
+stdio.h
+-
+time.h
+-
+string.h
+-
+
+/home/perseusf/Desktop/Studying (lab)/dyn.h
+array.h
+/home/perseusf/Desktop/Studying (lab)/array.h
+stdbool.h
+-
+
+/home/perseusf/Desktop/Studying (lab)/main.c
+dyn.h
+/home/perseusf/Desktop/Studying (lab)/dyn.h
+
