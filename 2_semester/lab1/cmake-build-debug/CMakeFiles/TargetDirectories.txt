@@ -1,3 +1,0 @@
-/home/perseusf/Desktop/Studying (lab)/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/perseusf/Desktop/Studying (lab)/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/perseusf/Desktop/Studying (lab)/cmake-build-debug/CMakeFiles/main.dir
