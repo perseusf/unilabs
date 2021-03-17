@@ -6,6 +6,7 @@
 #include <time.h>
 #include <string.h>
 #include <complex.h>
+
 //ARRAY STRUCTURE
 typedef struct array {
     int length; //length of the array
@@ -15,11 +16,13 @@ typedef struct array {
 
 //COMPLEX NUMBERS
 array* complexArraySetKeyboard(int arrayLen);
+array* complexArraySetRandom(int arrayLen);
 void complexArrayPrint(array* a);
 
 //INTEGERS
 array* intArraySetKeyboard(int arrayLen);
 void intArrayPrint(array* a);
+array* intArraySetRandom(int arrayLen);
 
 //OPERATIONS
 array* concatenate (array *a1, array *a2);
@@ -33,10 +36,10 @@ void complex_mult_2(void* item) ;
 
 //WHERE
 array* where (array *a, bool (*function) (void *item));
-bool more_than_5(void* item);
-bool less_than_5(void* element);
-bool has_positive_re(void* item);
-bool has_negative_re(void* item);
+bool more_than_50(void* item);
+bool less_than_50(void* element);
+bool re_more_than_50(void* item);
+bool re_less_than_50(void* item);
 
 //OTHER
 void array_free(array* array);

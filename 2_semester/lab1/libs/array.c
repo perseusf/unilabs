@@ -20,23 +20,24 @@ array* complexArraySetKeyboard(int arrayLen) {
     arrayFinal->data = temparray;
     return arrayFinal;
 }
-//array* complexArraySetRandom(int arrayLen) {
-//    array* arrayFinal = (array*)malloc(sizeof(array));
-//    arrayFinal->length = arrayLen;
-//    arrayFinal->elementSize = sizeof(ComplexNumber);
-//    arrayFinal->data = malloc(arrayLen*sizeof(ComplexNumber));
-//    int t = time(NULL);
-//    for (int i = 0; i < arrayLen; i += 1) {
-//        arrayFinal->data[i] = malloc(sizeof(ComplexNumber));
-//        arrayFinal->data[i] = complexSetRandom();
-//    }
-//    return arrayFinal;
-//}
+array* complexArraySetRandom(int arrayLen) {
+    array* arrayFinal = (array*)malloc(sizeof(array));
+    arrayFinal->length = arrayLen;
+    arrayFinal->elementSize = sizeof(complex double);
+    complex double* temparray = malloc(sizeof(complex double) * arrayLen);
+    int t = time(NULL);
+    for (size_t i = 0; i < arrayLen; i += 1) {
+        complex double result = (rand() % 100) + (rand() % 100) * I;
+        temparray[i] = result;
+    }
+    arrayFinal->data = temparray;
+    return arrayFinal;
+}
 void complexArrayPrint(array* a) {
     for (size_t i = 0; i < a->length; i++){
         complex double number = *((complex double*) (a->data + i * a->elementSize));
-        printf("%.2lf+", creal(number));
-        printf("%.2lfi  ", cimag(number));
+        printf("%.1lf+", creal(number));
+        printf("%.1lfi  ", cimag(number));
     }
     printf("\n");
 }
@@ -60,18 +61,17 @@ void intArrayPrint(array* a) {
     }
     printf("\n");
 }
-//array* intArraySetRandom(int arrayLen) {
-//    srand(time(NULL));
-//    array* arrayFinal = (array*)malloc(sizeof(array));
-//    arrayFinal->length = arrayLen;
-//    arrayFinal->elementSize = sizeof(int);
-//    arrayFinal->data = (int*)malloc(sizeof(int));
-//    for (int i = 0; i < arrayLen; i += 1) {
-//        arrayFinal->data[i] = malloc(sizeof(int*));
-//        arrayFinal = rand() % 100;
-//    }
-//    return arrayFinal;
-//}
+array* intArraySetRandom(int arrayLen) {
+    srand(time(NULL));
+    array* arrayFinal = (array*)malloc(sizeof(array));
+    arrayFinal->length = arrayLen;
+    arrayFinal->elementSize = sizeof(int);
+    arrayFinal->data = (int*)malloc(sizeof(int) * arrayLen);
+    for (size_t i = 0; i < arrayLen; i += 1) {
+        *(int*)(arrayFinal->data + i * arrayFinal->elementSize) = rand() % 100;
+    }
+    return arrayFinal;
+}
 
 //OPERATIONS
 array* concatenate (array *a1, array *a2) {
@@ -96,30 +96,25 @@ array* Map (array *a, void (*function) (void *elementOfArray)) {
 
     return arrayFinal;
 }
-
 void int_square(void* item) {
     *(int*)item *= *(int*)item;
 }
-
 void int_substr_one(void* item) {
     *(int*)item -= 1;
 }
-
 void complex_square(void* item) {
     *((complex double*) item) *= *((complex double*) item);
 }
-
 void complex_mult_2(void* item) {
     *((complex double*) item) *= 2;
 }
 
-
 //WHERE
-array* where (array *a, bool (*function) (void *item)) {
+array* where (array *a, bool (*function) (void* item)) {
     array* arrayFinal = (array*)malloc(sizeof(array));
     arrayFinal->length = a->length;
     arrayFinal->elementSize = a->elementSize;
-    arrayFinal->data = malloc(a->elementSize * a->elementSize);
+    arrayFinal->data = malloc(a->elementSize * a->length);
     size_t updatedLength = 0;
     for (size_t i = 0; i < a->length; i++) {
         bool isTrue = function(a->data + i * a->elementSize);
@@ -131,10 +126,9 @@ array* where (array *a, bool (*function) (void *item)) {
     arrayFinal->length = updatedLength;
     return arrayFinal;
 }
-
-bool more_than_5(void* item) {
+bool more_than_50(void* item) {
     bool l;
-    if (*(int*)item < 5) {
+    if (*(int*)item < 50) {
         l = false;
     }
     else {
@@ -142,34 +136,35 @@ bool more_than_5(void* item) {
     }
     return l;
 }
-
-bool less_than_5(void* element) {
+bool less_than_50(void* element) {
     bool l;
-    if (*(int*)element > 5)
+    if (*(int*)element > 50)
         l = false;
     else
         l = true;
     return l;
 }
-
-bool has_positive_re(void* item) {
+bool re_more_than_50(void* item) {
     bool l;
-    if (creal(*(complex double*)item) > 0)
+    if (creal(*(complex double*)item) > 50)
         l = true;
     else
         l = false;
     return l;
 }
-
-bool has_negative_re(void* item) {
+bool re_less_than_50(void* item) {
     bool l;
-    if (creal(*(complex double*)item) <= 0)
+    if (creal(*(complex double*)item) <= 50)
         l = true;
     else
         l = false;
     return l;
 }
 
+//OTHER
 void array_free(array* array) {
-    free(array->data);
+    if (array != NULL) {
+        free(array->data);
+        free(array);
+    }
 }

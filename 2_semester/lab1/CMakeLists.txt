@@ -5,5 +5,6 @@ set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 
-add_executable(main
-        main.c)
+add_executable(main main.c
+        ${CMAKE_SOURCE_DIR}/libs/array.c ${CMAKE_SOURCE_DIR}/libs/array.h
+        )
