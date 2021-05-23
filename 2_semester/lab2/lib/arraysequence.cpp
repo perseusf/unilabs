@@ -1,17 +1,17 @@
 #include "arraysequence.h"
 
 template<typename T>
-ArraySequence<T>::ArraySequence(): _array(new DynamicArray <T>()) {}
+ArraySequence<T>::ArraySequence(): _array(new DynamicArray <T>()) {
+
+}
 
 template<typename T>
-ArraySequence<T>::ArraySequence(T* data, int count)
-{
+ArraySequence<T>::ArraySequence(T* data, int count) {
     _array = new DynamicArray<T>(data, count);
 }
 
 template<typename T>
-ArraySequence<T>::ArraySequence(DynamicArray<T> &array)
-{
+ArraySequence<T>::ArraySequence(DynamicArray<T> &array) {
     _array = new LinkedList<T>(array);
 }
 
@@ -26,14 +26,12 @@ T &ArraySequence<T>::GetLast() {
 }
 
 template<typename T>
-T &ArraySequence<T>::Get(int index)
-{
+T &ArraySequence<T>::Get(int index) {
     return _array->Get(index);
 }
 
 template<typename T>
-Sequence<T> *ArraySequence<T>::GetSubSequence(int start_index, int end_index) const
-{
+Sequence<T> *ArraySequence<T>::GetSubSequence(int start_index, int end_index) const {
 
 }
 
@@ -44,7 +42,7 @@ int ArraySequence<T>::GetLength() const {
 }
 
 template<typename T> // dumb implementation from here
-void ArraySequence<T>::Append(const T &value){
+void ArraySequence<T>::Append(const T &value) {
     _array->Resize(this->GetLength()+1);
     _array->Set(0, value);
 }
@@ -62,13 +60,11 @@ void ArraySequence<T>::InsertAt(const T &value, int index) {
 }
 
 template<typename T>
-Sequence<T> *ArraySequence<T>::Concat(Sequence<T> *seq) const
-{
+Sequence<T> *ArraySequence<T>::Concat(Sequence<T> *seq) const {
 
 }
 
 template<typename T>
-ArraySequence<T>::~ArraySequence()
-{
+ArraySequence<T>::~ArraySequence() {
     delete _array;
 }

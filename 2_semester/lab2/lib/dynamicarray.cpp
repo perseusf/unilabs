@@ -7,8 +7,7 @@ DynamicArray<T>::DynamicArray() {
 }
 
 template<typename T>
-DynamicArray<T>::DynamicArray(T *data, int index)
-{
+DynamicArray<T>::DynamicArray(T *data, int index) {
     _length = index;
     if(index)
         _data = new T[index];
@@ -18,8 +17,7 @@ DynamicArray<T>::DynamicArray(T *data, int index)
 }
 
 template<typename T>
-DynamicArray<T>::DynamicArray (const DynamicArray<T> &array)
-{
+DynamicArray<T>::DynamicArray (const DynamicArray<T> &array) {
     _data = nullptr;
     _length = array._length;
     if (_length != 0)
@@ -31,14 +29,12 @@ DynamicArray<T>::DynamicArray (const DynamicArray<T> &array)
 }
 
 template<typename T>
-T &DynamicArray<T>::Get(int index)
-{
+T &DynamicArray<T>::Get(int index) {
     return _data[index];
 }
 
 template<typename T>
-DynamicArray<T>::DynamicArray (int length)
-{
+DynamicArray<T>::DynamicArray (int length) {
     _length = length;
     if (length != 0)
         _data = new T[length];
@@ -52,20 +48,17 @@ int DynamicArray<T>::GetLength() const {
 }
 
 template<typename T>
-void DynamicArray<T>::Set(int index, T value)
-{
+void DynamicArray<T>::Set(int index, T value) {
 
 }
 
 template<typename T>
-void DynamicArray<T>::Resize(int length)
-{
+void DynamicArray<T>::Resize(int length) {
 
 }
 
 template<typename T>
-DynamicArray<T>::~DynamicArray()
-{
+DynamicArray<T>::~DynamicArray() {
     _length = 0;
     delete[] _data;
 }

@@ -1,10 +1,8 @@
 #ifndef DYNAMICARRAY_H
 #define DYNAMICARRAY_H
 
-
 template <typename T>
-class DynamicArray
-{
+class DynamicArray {
 private:
     T *_data;
     int _length;

@@ -7,8 +7,7 @@
 #include "iostream"
 
 template <typename T>
-class ArraySequence: public Sequence<T>
-{
+class ArraySequence: public Sequence<T> {
 
 private:
     DynamicArray<T> *_array;
@@ -35,6 +34,5 @@ public:
     //Destructor
     ~ArraySequence();
 };
-
 
 #endif // ARRAYSEQUENCE_H
