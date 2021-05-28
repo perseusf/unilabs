@@ -1109,12 +1109,12 @@ wrapping it inside the `Matches()` function. For example,
 
 ```cpp
 #include <algorithm>
-#include <vector>
+#include <Vector>
 
 using ::testing::Matches;
 using ::testing::Ge;
 
-vector<int> v;
+Vector<int> v;
 ...
 // How many elements in v are >= 10?
 const int count = count_if(v.begin(), v.end(), Matches(Ge(10)));
@@ -1389,7 +1389,7 @@ Matcher<const Foo&> BarPlusBazEq(int expected_sum) {
 
 ### Matching Containers
 
-Sometimes an STL container (e.g. list, vector, map, ...) is passed to a mock
+Sometimes an STL container (e.g. list, Vector, map, ...) is passed to a mock
 function and you may want to validate it. Since most STL containers support the
 `==` operator, you can write `Eq(expected_container)` or simply
 `expected_container` to match a container exactly.
@@ -1408,7 +1408,7 @@ using ::testing::_;
 using ::testing::ElementsAre;
 using ::testing::Gt;
 ...
-  MOCK_METHOD(void, Foo, (const vector<int>& numbers), (override));
+  MOCK_METHOD(void, Foo, (const Vector<int>& numbers), (override));
 ...
   EXPECT_CALL(mock, Foo(ElementsAre(1, Gt(0), _, 5)));
 ```
@@ -1423,7 +1423,7 @@ using ::testing::_;
 using ::testing::Gt;
 using ::testing::UnorderedElementsAre;
 ...
-  MOCK_METHOD(void, Foo, (const vector<int>& numbers), (override));
+  MOCK_METHOD(void, Foo, (const Vector<int>& numbers), (override));
 ...
   EXPECT_CALL(mock, Foo(UnorderedElementsAre(1, Gt(0), _, 5)));
 ```
@@ -2070,13 +2070,13 @@ using ::testing::SetArrayArgument;
 
 class MockRolodex : public Rolodex {
  public:
-  MOCK_METHOD(void, GetNames, (std::back_insert_iterator<vector<string>>),
+  MOCK_METHOD(void, GetNames, (std::back_insert_iterator<Vector<string>>),
               (override));
   ...
 }
 ...
   MockRolodex rolodex;
-  vector<string> names;
+  Vector<string> names;
   names.push_back("George");
   names.push_back("John");
   names.push_back("Thomas");

@@ -13,25 +13,23 @@ private:
             this->pNext = pNext;
         }
     };
-    Node *_head;
-    int _length;
-
+    Node *head;
+    int length;
 public:
     //Constructors
     LinkedList();
-    LinkedList(T* data, int count);
-    LinkedList(const LinkedList <T>& list);
-
+    LinkedList(T* data, int length);
+    LinkedList(const LinkedList <T> &list);
 
     //Decomposition
-    T& Front() const;
-    T& Back() const;
-    T& Get(int index) const;
-    void PopFront();
-    void PopBack();
+    T& GetFront() const;
+    T& GetBack() const;
+    T& GetByIndex(int index) const;
+//    void PopFront();
+//    void PopBack();
     void DelByIndex(int index);
     void Clear();
-    LinkedList<T>* GetSubList(int start_index, int end_index) const;
+    LinkedList<T>* GetSubList(int start, int end) const;
     int GetLength() const;
 
     //Operations
@@ -41,6 +39,8 @@ public:
     void Set(const T& data, int index);
     LinkedList<T>* Concat(LinkedList<T> *list) const;
 
+    //OPERATORS
+    T& operator[](int index);
 
     //Destructor
     ~LinkedList();

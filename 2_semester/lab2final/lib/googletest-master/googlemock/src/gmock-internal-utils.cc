@@ -46,7 +46,7 @@
 namespace testing {
 namespace internal {
 
-// Joins a vector of strings as if they are fields of a tuple; returns
+// Joins a Vector of strings as if they are fields of a tuple; returns
 // the joined string.
 GTEST_API_ std::string JoinAsTuple(const Strings& fields) {
   switch (fields.size()) {

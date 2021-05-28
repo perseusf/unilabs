@@ -76,10 +76,10 @@
 //   // pointer and the NUL-terminated string for a (const or not) char pointer.
 //   void ::testing::internal::UniversalPrint(const T& value, ostream*);
 //
-//   // Prints the fields of a tuple tersely to a string vector, one
+//   // Prints the fields of a tuple tersely to a string Vector, one
 //   // element for each field. Tuple support must be enabled in
 //   // gtest-port.h.
-//   std::vector<string> UniversalTersePrintTupleFieldsToStrings(
+//   std::Vector<string> UniversalTersePrintTupleFieldsToStrings(
 //       const Tuple& value);
 //
 // Known limitation:
@@ -982,7 +982,7 @@ void UniversalPrint(const T& value, ::std::ostream* os) {
 
 typedef ::std::vector< ::std::string> Strings;
 
-  // Tersely prints the first N fields of a tuple to a string vector,
+  // Tersely prints the first N fields of a tuple to a string Vector,
   // one element for each field.
 template <typename Tuple>
 void TersePrintPrefixToStrings(const Tuple&, std::integral_constant<size_t, 0>,
@@ -998,7 +998,7 @@ void TersePrintPrefixToStrings(const Tuple& t,
   strings->push_back(ss.str());
 }
 
-// Prints the fields of a tuple tersely to a string vector, one
+// Prints the fields of a tuple tersely to a string Vector, one
 // element for each field.  See the comment before
 // UniversalTersePrint() for how we define "tersely".
 template <typename Tuple>

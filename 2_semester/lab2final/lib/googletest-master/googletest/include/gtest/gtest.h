@@ -625,12 +625,12 @@ class GTEST_API_ TestResult {
   friend class internal::WindowsDeathTest;
   friend class internal::FuchsiaDeathTest;
 
-  // Gets the vector of TestPartResults.
+  // Gets the Vector of TestPartResults.
   const std::vector<TestPartResult>& test_part_results() const {
     return test_part_results_;
   }
 
-  // Gets the vector of TestProperties.
+  // Gets the Vector of TestProperties.
   const std::vector<TestProperty>& test_properties() const {
     return test_properties_;
   }
@@ -671,13 +671,13 @@ class GTEST_API_ TestResult {
   // Clears the object.
   void Clear();
 
-  // Protects mutable state of the property vector and of owned
+  // Protects mutable state of the property Vector and of owned
   // properties, whose values may be updated.
   internal::Mutex test_properties_mutex_;
 
-  // The vector of TestPartResults
+  // The Vector of TestPartResults
   std::vector<TestPartResult> test_part_results_;
-  // The vector of TestProperties
+  // The Vector of TestProperties
   std::vector<TestProperty> test_properties_;
   // Running count of death tests.
   int death_test_count_;
@@ -836,7 +836,7 @@ class GTEST_API_ TestInfo {
   GTEST_DISALLOW_COPY_AND_ASSIGN_(TestInfo);
 };
 
-// A test suite, which consists of a vector of TestInfos.
+// A test suite, which consists of a Vector of TestInfos.
 //
 // TestSuite is not copyable.
 class GTEST_API_ TestSuite {
@@ -891,7 +891,7 @@ class GTEST_API_ TestSuite {
   // Gets the number of tests to be printed in the XML report.
   int reportable_test_count() const;
 
-  // Get the number of tests in this test suite that should run.
+  // GetByIndex the number of tests in this test suite that should run.
   int test_to_run_count() const;
 
   // Gets the number of all tests in this test suite.
@@ -924,10 +924,10 @@ class GTEST_API_ TestSuite {
   friend class Test;
   friend class internal::UnitTestImpl;
 
-  // Gets the (mutable) vector of TestInfos in this TestSuite.
+  // Gets the (mutable) Vector of TestInfos in this TestSuite.
   std::vector<TestInfo*>& test_info_list() { return test_info_list_; }
 
-  // Gets the (immutable) vector of TestInfos in this TestSuite.
+  // Gets the (immutable) Vector of TestInfos in this TestSuite.
   const std::vector<TestInfo*>& test_info_list() const {
     return test_info_list_;
   }
@@ -1020,12 +1020,12 @@ class GTEST_API_ TestSuite {
   // Name of the parameter type, or NULL if this is not a typed or a
   // type-parameterized test.
   const std::unique_ptr<const ::std::string> type_param_;
-  // The vector of TestInfos in their original order.  It owns the
-  // elements in the vector.
+  // The Vector of TestInfos in their original order.  It owns the
+  // elements in the Vector.
   std::vector<TestInfo*> test_info_list_;
   // Provides a level of indirection for the test list to allow easy
   // shuffling and restoring the test order.  The i-th element in this
-  // vector is the index of the i-th test in the shuffled test list.
+  // Vector is the index of the i-th test in the shuffled test list.
   std::vector<int> test_indices_;
   // Pointer to the function that sets up the test suite.
   internal::SetUpTestSuiteFunc set_up_tc_;
@@ -1261,7 +1261,7 @@ class GTEST_API_ TestEventListeners {
   GTEST_DISALLOW_COPY_AND_ASSIGN_(TestEventListeners);
 };
 
-// A UnitTest consists of a vector of TestSuites.
+// A UnitTest consists of a Vector of TestSuites.
 //
 // This is a singleton class.  The only instance of UnitTest is
 // created when UnitTest::GetInstance() is first called.  This
@@ -2433,7 +2433,7 @@ GTEST_API_ std::string TempDir();
 //   int data_;
 // };
 //
-// void RegisterMyTests(const std::vector<int>& values) {
+// void RegisterMyTests(const std::Vector<int>& values) {
 //   for (int v : values) {
 //     ::testing::RegisterTest(
 //         "MyFixture", ("Test" + std::to_string(v)).c_str(), nullptr,
@@ -2445,7 +2445,7 @@ GTEST_API_ std::string TempDir();
 // }
 // ...
 // int main(int argc, char** argv) {
-//   std::vector<int> values_to_test = LoadValuesFromConfig();
+//   std::Vector<int> values_to_test = LoadValuesFromConfig();
 //   RegisterMyTests(values_to_test);
 //   ...
 //   return RUN_ALL_TESTS();

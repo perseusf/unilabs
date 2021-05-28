@@ -19,7 +19,7 @@ T &ListSequence<T>::GetFirst() {
     try {
         if (!_list->GetLength())
             throw "The list is empty!";
-        return _list->Front();
+        return _list->GetFront();
     }  catch (const char* error) {
         std::cout << error << std::endl;
     }
@@ -30,7 +30,7 @@ T &ListSequence<T>::GetLast() {
     try {
         if (!_list->GetLength())
             throw "The list is empty!";
-        return _list->Back();
+        return _list->GetBack();
     }  catch (const char* error) {
         std::cout << error << std::endl;
     }
@@ -41,7 +41,7 @@ T &ListSequence<T>::Get(int index) {
     try {
         if (index >= _list->GetLength() || index < 0)
             throw "Index out of range!";
-        return _list->Get(index);
+        return _list->GetByIndex(index);
     } catch(const char* error) {
         std::cout << error << std::endl;
     }

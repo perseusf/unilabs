@@ -6,25 +6,26 @@ template<class T>
 class DynamicArray {
 
 private:
-    T *_data;
-    int _length;
+    T *data;
+    int length;
 
 public:
     //Constructors
     DynamicArray();
-    DynamicArray(T *data, int index);
+    DynamicArray(T *array, int size);
     DynamicArray(int length);
     DynamicArray(const DynamicArray<T>& array);
 
     //Decomposition
     T& Get(int index);
-    T& Get(int index, const T &error);
     void DelByIndex(int index);
     int GetLength() const;
 
     //Operations
-    void Set(const T &value, int index);
+    void Set(int index, const T &value);
     void Resize(int length);
+    T& operator[](const int index);
+    bool operator==(const DynamicArray<T> &array);
 
     //Destructor
     ~DynamicArray();

@@ -1,122 +1,160 @@
 #include <iostream>
 #include "dynamicarray.h"
 
+//ok
 template<class T>
 DynamicArray<T>::DynamicArray() {
-    _data = nullptr;
-    _length = 0;
+    data = nullptr;
+    length = 0;
 }
 
+//ok
 template<class T>
-DynamicArray<T>::DynamicArray(T *data, int index) {
-    _length = index;
-    if(index)
-        _data = new T[index];
-    else _data = nullptr;
-    for (int i = 0; i < _length; i++)
-        _data[i] = data[i];
-}
-
-template<class T>
-DynamicArray<T>::DynamicArray (int length) {
-    _length = length;
-    if (length != 0)
-        _data = new T[length];
+DynamicArray<T>::DynamicArray(T *array, int size) {
+    length = size;
+    if (size)
+        data = new T[size];
     else
-        _data = nullptr;
+        data = nullptr;
+    for (int i = 0; i < length; i++)
+        data[i] = array[i];
+}
+//ok
+template<class T>
+DynamicArray<T>::DynamicArray (int size) {
+    length = size;
+    if (length != 0)
+        data = new T[length];
+    else
+        data = nullptr;
 }
 
+//ok
 template<class T>
 DynamicArray<T>::DynamicArray (const DynamicArray<T> &array) {
-    _length = array->_length;
-    if (_length != 0)
-        _data = new T[_length];
+    length = array->length;
+    if (length != 0)
+        data = new T[length];
     else
-        _data = nullptr;
-    for (int i = 0; i < _length; i++)
-        _data[i] = array->_data[i];
+        data = nullptr;
+    for (int i = 0; i < length; i++)
+        data[i] = array->data[i];
 }
 
+//ok
 template<class T>
 T &DynamicArray<T>::Get(int index) {
     try {
-        if (index < 0 || index >= _length)
-            throw "Index is out of range!";
-        return _data[index];
+        if (index < 0 || index >= length)
+            throw "INDEX_OUT_OF_RANGE!";
+        return data[index];
     }  catch (const char *error) {
         std::cout << error << std::endl;
     }
-    return _data[0];
+    return data[0];
 }
 
-template<class T>
-T &DynamicArray<T>::Get(int index, const T &error) {
-    try {
-        if (index < 0 || index >= _length)
-            throw "Index is out of range!";
-        return _data[index];
-    }  catch (const char *error) {
-        std::cout << error << std::endl;
-    }
-    return error;
-}
 
+//template<class T>
+//T &DynamicArray<T>::Get(int index, const T &error) {
+//    try {
+//        if (index < 0 || index >= length)
+//            throw "Index is out of range!";
+//        return data[index];
+//    }  catch (const char *error) {
+//        std::cout << error << std::endl;
+//    }
+//    return error;
+//}
+
+//rewrite! or check
 template<class T>
 void DynamicArray<T>::DelByIndex(int index) {
     try {
-        if (index >= _length || index < 0)
-            throw "Index is out of range!";
-        for (int i = 0; i < _length - 1; ++i) {
+        if (index >= length || index < 0)
+            throw "INDEX_OUT_OF_RANGE!";
+        for (int i = 0; i < length - 1; i++) {
             if (i < index) continue;
-            else _data[i] = _data[i + 1];
+            else data[i] = data[i + 1];
         }
-        this->Resize(_length - 1);
+        this->Resize(length - 1); //rewrite this carefully
     }  catch (const char *error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok
 template<class T>
 int DynamicArray<T>::GetLength() const {
-    return _length;
+    return length;
 }
 
+//ok
 template<class T>
-void DynamicArray<T>::Set(const T &value, int index) {
+void DynamicArray<T>::Set(int index, const T &value) {
     try {
-        if (index < 0 || index >= _length)
-            throw "Index is out of range!";
-        _data[index] = value;
+        if (index < 0 || index >= length)
+            throw "INDEX_OUT_OF_RANGE!";
+        data[index] = value;
     }  catch (const char* error) {
         std::cout << error << std::endl;
     }
 }
 
+//rewrite!!!!! repeated
 template<class T>
 void DynamicArray<T>::Resize(int length) {
     try {
         if (length < 0)
-            throw "Length cannot be negative number!";
+            throw "LENGTH_NEGATIVE!";
         if (!length) {
-            delete[] _data;
-            _data = nullptr;
-            _length = 0;
+            delete[] data;
+            data = nullptr;
+            length = 0;
             return;
         }
         T *array = new T [length];
-        for (int i = 0; i < std::min(length, _length); ++i) {
+        for (int i = 0; i < std::min(length, length); ++i) {
             array[i] = this->Get(i);
         }
-        delete[] _data;
-        _data = array;
-        _length = length;
+        delete[] data;
+        data = array;
+        length = length;
     }  catch (const char* error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok
+template<typename T>
+T &DynamicArray<T>::operator[](const int index) {
+    try {
+        if (index < 0 || index >= length) {
+            throw "INDEX_OUT_OF_RANGE";
+        }
+    } catch (const char *error) {
+        std::cout << error << std::endl;
+    }
+    return Get(index);
+}
+
+//ok
+template<typename T> bool DynamicArray<T>::operator==(const DynamicArray<T> &arr) {
+    if (length != arr.length) {
+        return false;
+    }
+    for (int i = 0; i < this->length; i++) {
+        if (Get(i) != arr.Get(i)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+//ok
 template<class T>
 DynamicArray<T>::~DynamicArray() {
-    _length = 0;
-    delete[] _data;
+    length = 0;
+    delete[] data;
 }

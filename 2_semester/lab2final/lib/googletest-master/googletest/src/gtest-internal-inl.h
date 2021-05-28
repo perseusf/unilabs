@@ -303,7 +303,7 @@ void ForEach(const Container& c, Functor functor) {
   std::for_each(c.begin(), c.end(), functor);
 }
 
-// Returns the i-th element of the vector, or default_value if i is not
+// Returns the i-th element of the Vector, or default_value if i is not
 // in range [0, v.size()).
 template <typename E>
 inline E GetElementOr(const std::vector<E>& v, int i, E default_value) {
@@ -311,10 +311,10 @@ inline E GetElementOr(const std::vector<E>& v, int i, E default_value) {
                                                     : v[static_cast<size_t>(i)];
 }
 
-// Performs an in-place shuffle of a range of the vector's elements.
+// Performs an in-place shuffle of a range of the Vector's elements.
 // 'begin' and 'end' are element indices as an STL-style range;
 // i.e. [begin, end) are shuffled, where 'end' == size() means to
-// shuffle to the end of the vector.
+// shuffle to the end of the Vector.
 template <typename E>
 void ShuffleRange(internal::Random* random, int begin, int end,
                   std::vector<E>* v) {
@@ -338,7 +338,7 @@ void ShuffleRange(internal::Random* random, int begin, int end,
   }
 }
 
-// Performs an in-place shuffle of the vector's elements.
+// Performs an in-place shuffle of the Vector's elements.
 template <typename E>
 inline void Shuffle(internal::Random* random, std::vector<E>* v) {
   ShuffleRange(random, 0, static_cast<int>(v->size()), v);
@@ -774,7 +774,7 @@ class GTEST_API_ UnitTestImpl {
   TestInfo* current_test_info() { return current_test_info_; }
   const TestInfo* current_test_info() const { return current_test_info_; }
 
-  // Returns the vector of environments that need to be set-up/torn-down
+  // Returns the Vector of environments that need to be set-up/torn-down
   // before/after the tests are run.
   std::vector<Environment*>& environments() { return environments_; }
 
@@ -871,17 +871,17 @@ class GTEST_API_ UnitTestImpl {
   internal::ThreadLocal<TestPartResultReporterInterface*>
       per_thread_test_part_result_reporter_;
 
-  // The vector of environments that need to be set-up/torn-down
+  // The Vector of environments that need to be set-up/torn-down
   // before/after the tests are run.
   std::vector<Environment*> environments_;
 
-  // The vector of TestSuites in their original order.  It owns the
-  // elements in the vector.
+  // The Vector of TestSuites in their original order.  It owns the
+  // elements in the Vector.
   std::vector<TestSuite*> test_suites_;
 
   // Provides a level of indirection for the test suite list to allow
   // easy shuffling and restoring the test suite order.  The i-th
-  // element of this vector is the index of the i-th test suite in the
+  // element of this Vector is the index of the i-th test suite in the
   // shuffled order.
   std::vector<int> test_suite_indices_;
 

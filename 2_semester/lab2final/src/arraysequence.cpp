@@ -1,111 +1,128 @@
 #include "arraysequence.h"
-
+#include "dynamicarray.h"
+//#include "dynamicarray.cpp"
+//ok
 template<class T>
-ArraySequence<T>::ArraySequence(): _array(new DynamicArray <T>()) {}
+ArraySequence<T>::ArraySequence(): array(new DynamicArray <T>()) {}
 
+//ok
 template<class T>
-ArraySequence<T>::ArraySequence(T* data, int count) {
-    _array = new DynamicArray<T>(data, count);
+ArraySequence<T>::ArraySequence(T* data, int length) {
+    array = new DynamicArray<T>(data, length);
 }
 
+//ok
 template<class T>
-ArraySequence<T>::ArraySequence(ArraySequence<T> &array) {
-    _array = new DynamicArray<T>(array.GetLength());
-    for (int i = 0; i < _array->GetLength(); ++i) {
-        _array->Set(array.Get(i), i);
+ArraySequence<T>::ArraySequence(ArraySequence<T> &data) {
+    this->array = new DynamicArray<T>(data.GetLength());
+    for (int i = 0; i < data->GetLength(); ++i) {
+        this->array->Set(data.Get(i), i);
     }
 }
 
+//ok
 template<class T>
 T &ArraySequence<T>::GetFirst() {
     try {
-        if (_array->GetLength() <= 0)
-            throw "Length is an invalid value!";
-        return _array->Get(0);
+        if (GetLength() <= 0)
+            throw "INVALID_LENGTH!";
+        return Get(0);
     }  catch (const char *error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok
 template<class T>
 T &ArraySequence<T>::GetLast() {
     try {
-        if (_array->GetLength() <= 0)
-            throw "Length is an invalid value!";
-        return _array->Get(this->GetLength() - 1);
+        if (GetLength() <= 0)
+            throw "INVALID_LENGTH!";
+        return Get(GetLength() - 1);
     }  catch (const char *error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok
 template<class T>
 T &ArraySequence<T>::Get(int index) {
     try {
-        if (index < 0 || index >= _array->GetLength())
-            throw "Index is out of range!";
-        return _array->Get(index);
+        if (index < 0 || index >= GetLength())
+            throw "INDEX_OUT_OF_RANGE!";
+        return Get(index);
     }  catch (const char *error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok
 template<class T>
 T &ArraySequence<T>::operator[](const int index) {
     try {
-        if (index < 0 || index >= _array->GetLength())
-            throw "Index is out of range!";
-        return this->Get(index);
+        if (index < 0 || index >= GetLength())
+            throw "INDEX_OUT_OF_RANGE!";
+        return Get(index);
     }  catch (const char *error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok
 template<class T>
-Sequence<T> *ArraySequence<T>::GetSubSequence(int start_index, int end_index) const {
+Sequence<T> *ArraySequence<T>::GetSubSequence(int start, int end) const {
     try {
-        if (start_index > end_index || start_index < 0 || end_index < 0 || start_index >= this->GetLength()
-                || end_index > this->GetLength())
-            throw "Invalid index!";
-        Sequence<T> *array = (Sequence<T> *) new DynamicArray<T>(end_index - start_index);
-        for (int i = start_index; i < end_index; ++i)
-            array->Set(_array->Get(i), i - start_index);
-        return array;
+        if (start > end || start < 0 || end < 0 || start >= GetLength() || end > GetLength())
+            throw "INVALID_INDEX!";
+        Sequence<T> *rArray = (Sequence<T> *) new DynamicArray<T>(end - start);
+        for (int i = start; i < end; ++i)
+            rArray->Set(array->Get(i), i - start);
+        return rArray;
     }  catch (const char *error) {
         std::cout << error << std::endl;
     }
-
 }
 
+//ok
 template<class T>
 int ArraySequence<T>::GetLength() const {
-    return _array->GetLength();
+    return array->GetLength();
 }
 
+//ok
 template<class T>
 void ArraySequence<T>::DelByIndex(int index) {
     try {
-        if (index < 0 || index >= _array->GetLength())
-            throw "Index is out of range!";
-        _array->DelByIndex(index);
+        if (index < 0 || index >= array->GetLength())
+            throw "INDEX_OUT_OF_RANGE";
+        array->DelByIndex(index);
     }  catch (const char *error) {
         std::cout << error << std::endl;
     }
 }
 
 template<class T>
-void ArraySequence<T>::Prepend(const T &value){
-    _array->Resize(this->GetLength()+1);
-    for (int i = this->GetLength() - 1; i > 0; --i)
-        _array->Set(this->Get(i - 1), i);
-    _array->Set(value, 0);
+void ArraySequence<T>::Resize(int length) {
+    array->Resize(length);
 }
 
+//ok rewrite
+template<class T>
+void ArraySequence<T>::Prepend(const T &value){
+    Resize(GetLength() + 1);
+    for (int i = GetLength() - 1; i > 0; --i)
+        Set(Get(i - 1), i);
+    Set(value, 0);
+}
+
+//or rewrite
 template<class T>
 void ArraySequence<T>::Append(const T &value) {
-    _array->Resize(this->GetLength()+1);
-    _array->Set(value, this->GetLength() - 1);
+    array->Resize(this->GetLength() + 1);
+    array->Set(value, this->GetLength() - 1);
 }
 
+//ok rewrite
 template<class T>
 void ArraySequence<T>::InsertAt(const T &value, int index) {
     if (index == this->GetLength()) {
@@ -113,31 +130,33 @@ void ArraySequence<T>::InsertAt(const T &value, int index) {
         return;
     }
     if (index > this->GetLength()) {
-        _array->Resize(index);
+        array->Resize(index);
         this->Append(value);
         return;
     }
-    _array->Resize(this->GetLength() + 1);
+    array->Resize(this->GetLength() + 1);
     for (int i = this->GetLength() - 1; i > index; --i)
-        _array->Set(this->Get(i - 1), i);
-    _array->Set(value, index);
+        array->Set(this->Get(i - 1), i);
+    array->Set(value, index);
 }
 
+//rewrite
 template<class T>
 void ArraySequence<T>::Set(const T &value, int index) {
     if (index >= this->GetLength())
-        _array->Resize(index + 1);
-    _array->Set(value, index);
+        array->Resize(index + 1);
+    array->Set(value, index);
 }
 
+//rewrite
 template<class T>
 Sequence<T> *ArraySequence<T>::Concat(Sequence<T> *seq) const {
     try {
         if (seq == nullptr)
             throw "There is no sequence to contact!";
-        Sequence<T> *array = (Sequence<T> *) new DynamicArray<T>(_array->GetLength() + seq->GetLength());
+        Sequence<T> *array = (Sequence<T> *) new DynamicArray<T>(array->GetLength() + seq->GetLength());
         for (int i = 0; i < -array->GetLength(); ++i)
-            array->Append(_array->Get(i));
+            array->Append(array->Get(i));
         for (int i = 0; i < seq->GetLength(); ++i)
             array->Append(seq->Get(i));
         return array;
@@ -146,8 +165,9 @@ Sequence<T> *ArraySequence<T>::Concat(Sequence<T> *seq) const {
     }
 }
 
+//rewrite
 template<class T>
 ArraySequence<T>::~ArraySequence() {
-    _array->~DynamicArray<T>();
-    delete _array;
+    array->~DynamicArray<T>();
+    delete array;
 }

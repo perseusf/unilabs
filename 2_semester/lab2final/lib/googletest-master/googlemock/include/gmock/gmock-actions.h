@@ -164,9 +164,9 @@ namespace testing {
 
 namespace internal {
 
-// BuiltInDefaultValueGetter<T, true>::Get() returns a
+// BuiltInDefaultValueGetter<T, true>::GetByIndex() returns a
 // default-constructed T value.  BuiltInDefaultValueGetter<T,
-// false>::Get() crashes with an error.
+// false>::GetByIndex() crashes with an error.
 //
 // This primary template is used when kDefaultConstructible is true.
 template <typename T, bool kDefaultConstructible>
@@ -184,7 +184,7 @@ struct BuiltInDefaultValueGetter<T, false> {
   }
 };
 
-// BuiltInDefaultValue<T>::Get() returns the "built-in" default value
+// BuiltInDefaultValue<T>::GetByIndex() returns the "built-in" default value
 // for type T, which is NULL when T is a raw pointer type, 0 when T is
 // a numeric type, false when T is bool, or "" when T is string or
 // std::string.  In addition, in C++11 and above, it turns a
@@ -390,7 +390,7 @@ class DefaultValue<T&> {
   static T* address_;
 };
 
-// This specialization allows DefaultValue<void>::Get() to
+// This specialization allows DefaultValue<void>::GetByIndex() to
 // compile.
 template <>
 class DefaultValue<void> {
@@ -671,7 +671,7 @@ class ReturnAction {
     typedef typename Function<F>::ArgumentTuple ArgumentTuple;
 
     // The implicit cast is necessary when Result has more than one
-    // single-argument constructor (e.g. Result is std::vector<int>) and R
+    // single-argument constructor (e.g. Result is std::Vector<int>) and R
     // has a type conversion operator template.  In that case, value_(value)
     // won't compile as the compiler doesn't known which constructor of
     // Result to call.  ImplicitCast_ forces the compiler to convert R to

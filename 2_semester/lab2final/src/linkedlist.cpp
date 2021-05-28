@@ -1,221 +1,241 @@
 #include <iostream>
 #include "linkedlist.h"
 
-
+//ok
 template<class T>
 LinkedList<T>::LinkedList() {
-    _length = 0;
-    _head = nullptr;
+    length = 0;
+    head = nullptr;
 }
 
+//check
 template<class T>
-LinkedList<T>::LinkedList(T *data, int count) : LinkedList() {
-    for (int i = 0; i < count; i++)
-        PushBack(data[i]);
+LinkedList<T>::LinkedList(T *data, int length) : LinkedList() {
+    try {
+        if (length < 0) {
+            throw "LENGTH_NEGATIVE!";
+        } for (int i = 0; i < length; i++)
+            PushBack(data[i]);
+    } catch (const char *error) {
+        std::cout << error << std::endl;
+    }
 }
 
+//ok
 template<class T>
 LinkedList<T>::LinkedList(const LinkedList<T> &list) : LinkedList() {
-    Node *node = list._head;
-    for (int i = 0; i < list._length; i++) {
+    Node *node = list.head;
+    for (int i = 0; i < list.length; i++) {
         PushBack(node->data);
         node = node->pNext;
     }
 }
 
+//ok
 template<class T>
-T &LinkedList<T>::Front() const {
+T &LinkedList<T>::GetFront() const {
     try {
-        if (!this->_length)
-            throw "The list is empty!";
-        T &front = this->_head->data;
+        if (!length)
+            throw "EMPTY_LIST!";
+        T &front = head->data;
         return front;
     }  catch (const char* error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok
 template<class T>
-T &LinkedList<T>::Back() const {
+T &LinkedList<T>::GetBack() const {
     try {
-        if (!this->_length)
-            throw "The list is empty!";
-        Node *node = this->_head;
-        for (int i = 0; i < this->_length; ++i) {
+        if (!length)
+            throw "EMPTY_LIST!";
+        Node *node = head;
+        for (int i = 0; i < length; i++) {
             node = node->pNext;
         }
         T &back = node->data;
         return back;
-    }  catch (const char* error) {
+    } catch (const char* error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok
 template<class T>
-T &LinkedList<T>::Get(int index) const {
+T &LinkedList<T>::GetByIndex(int index) const {
     try {
-        if (index >= this->_length || index < 0)
-            throw "Index out of range!";
-        Node *node = this->_head;
+        if (index >= length || index < 0)
+            throw "INDEX_OUT_OF_RANGE!";
+        Node *node = head;
         for (int i = 0; i < index; ++i) {
             node = node->pNext;
         }
         T &value = node->data;
         return value;
-    } catch(const char* error) {
+    } catch (const char* error) {
         std::cout << error << std::endl;
     }
 }
 
-template<class T>
-void LinkedList<T>::PopFront() {
-    try {
-        if (!this->_length)
-            throw "The list is empty!";
-        Node* del_node = this->_head;
-        this->_head = this->_head->pNext;
-        delete del_node;
-        --this->_length;
-    }  catch (const char* error) {
-        std::cout << error << std::endl;
-    }
-}
 
-template<class T>
-void LinkedList<T>::PopBack() {
-    try {
-        if (!this->_length)
-            throw "The list is empty!";
-        Node* node = this->_head;
-        for (int i = 0; i < this->_length - 1; ++i) node = node->pNext;
-        Node* del_node = node->pNext;
-        node->pNext = nullptr;
-        delete del_node;
-        --this->_length;
-    }  catch (const char* error) {
-        std::cout << error << std::endl;
-    }
-}
+//template<class T>
+//void LinkedList<T>::PopFront() {
+//    try {
+//        if (!this->length)
+//            throw "EMPTY LIST!";
+//        Node* del_node = this->head;
+//        this->head = this->head->pNext;
+//        delete del_node;
+//        --this->length;
+//    }  catch (const char* error) {
+//        std::cout << error << std::endl;
+//    }
+//}
 
+//template<class T>
+//void LinkedList<T>::PopBack() {
+//    try {
+//        if (!this->length)
+//            throw "EMPTY LIST!";
+//        Node* node = this->head;
+//        for (int i = 0; i < this->length - 1; ++i) node = node->pNext;
+//        Node* del_node = node->pNext;
+//        node->pNext = nullptr;
+//        delete del_node;
+//        --this->length;
+//    }  catch (const char* error) {
+//        std::cout << error << std::endl;
+//    }
+//}
+
+//check
 template<class T>
 void LinkedList<T>::Clear() {
-    while (_length)
-        PopFront();
+    while (length)
+        DelByIndex(0); //0 or 1 or the last????
 }
 
+//ok rewrite
 template<class T>
 void LinkedList<T>::DelByIndex(int index) {
     try {
-        if (index < 0 || index >= _length)
-            throw "Index is out of range";
+        if (index < 0 || index >= length)
+            throw "INDEX_OUT_OF_RANGE!";
         if (!index) {
-            Node *n_del = _head;
-            _head = _head->pNext;
+            Node *n_del = head;
+            head = head->pNext;
             delete n_del;
-            --_length;
+            length--;
             return;
         }
-        Node *n = _head;
+        Node *n = head;
         for (int i = 1; i < index; ++i) {
             n = n->pNext;
         }
         Node *n_del = n->pNext;
         n->pNext = n->pNext->pNext;
         delete n_del;
-        --_length;
+        length--;
     }  catch (const char *error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok but check this->GetByIndex(i) can we delete this-> ???
 template<class T>
-LinkedList<T> *LinkedList<T>::GetSubList(int start_index, int end_index) const {
+LinkedList<T> *LinkedList<T>::GetSubList(int start, int end) const {
     try {
-        if (start_index < 0 || start_index >= this->_length || end_index < 0 || end_index > this->_length)
-            throw "Index is out of range!";
-        if (start_index > end_index)
-            std::swap(start_index, end_index);
-        LinkedList<T>* list = new LinkedList<T>;
-        for (int i = start_index; i < end_index; ++i)
-            (*list).PushBack(this->Get(i));
+        if (start < 0 || start >= length || end < 0 || end > length)
+            throw "INDEX_OUT_OF_RANGE!";
+        if (start > end)
+            std::swap(start, end);
+        LinkedList<T> *list = new LinkedList<T>;
+        for (int i = start; i < end; ++i)
+            (*list).PushBack(this->GetByIndex(i));
         return list;
     }  catch (const char* error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok
 template<class T>
 int LinkedList<T>::GetLength() const {
-    return _length;
+    return length;
 }
 
+//check!!!
 template<class T>
 void LinkedList<T>::PushFront(const T &data) {
-    Node* new_node = new Node;
-    *new_node = Node(data);
-    if (!this->_length) {
-        this->_head = new_node;
-        ++this->_length;
+    Node* nNode = new Node;
+    *nNode = Node(data); //??????
+    if (!length) {
+        head = nNode;
+        length++;
         return;
     }
-    new_node->pNext = this->_head;
-    this->_head = new_node;
+    nNode->pNext = head;
+    head = nNode;
 }
 
+//ok maybe rewrite?
 template<class T>
 void LinkedList<T>::PushBack(const T &data) {
-        Node* new_node = new Node;
-        new_node->data = data;
-        new_node->pNext = nullptr;
-        if (!this->_length) {
-            this->_head = new_node;
-            ++this->_length;
-            return;
-        }
-        Node *node = this->_head;
-        for(int i = 0; i < this->_length - 1; ++i) {
-            node = node->pNext;
-        }
-        node->pNext = new_node;
-        ++this->_length;
+    Node* nNode = new Node;
+    nNode->data = data;
+    nNode->pNext = nullptr;
+    if (!length) {
+        head = nNode;
+        length++;
+        return;
+    }
+    Node *node = head;
+    for(int i = 0; i < length - 1; ++i) {
+        node = node->pNext;
+    }
+    node->pNext = nNode;
+    length++;
 }
 
+//ok but research
 template<class T>
 void LinkedList<T>::InsertAt(const T &data, int index) {
     try {
-        if (index < 0 || index > this->_length)
-            throw "Index is out of range!";
+        if (index < 0 || index > length)
+            throw "INDEX_OUT_OF_RANGE!";
         if (!index) {
-            this->PushFront(data);
+            PushFront(data);
             return;
         }
-        if (index == this->_length) {
-            this->PushBack(data);
+        if (index == length) {
+            PushBack(data);
             return;
         }
-        Node* node = this->_head;
+        Node* node = head;
         for (int i = 0; i < index - 1; ++i) {
             node = node->pNext;
         }
-        Node* new_node = new Node;
-        *new_node = Node(data, node->pNext);
-        node->pNext = new_node;
-        ++this->_length;
+        Node* nNode = new Node;
+        *nNode = Node(data, node->pNext);
+        node->pNext = nNode;
+        length++;
     }  catch (const char* error) {
         std::cout << error << std::endl;
     }
 }
 
+//ok
 template<class T>
 void LinkedList<T>::Set(const T &data, int index) {
     try {
-        if (index < 0 || index > this->_length)
-            throw "Index is out of range!";
-        if (index == _length) {
-            this->PushBack(data);
+        if (index < 0 || index > length)
+            throw "INDEX_OUT_OF_RANGE!";
+        if (index == length) {
+            PushBack(data);
             return;
         }
-        Node* node = this->_head;
+        Node* node = head;
         for (int i = 0; i < index; ++i) {
             node = node->pNext;
         }
@@ -225,20 +245,37 @@ void LinkedList<T>::Set(const T &data, int index) {
     }
 }
 
+//ok
 template<class T>
 LinkedList<T> *LinkedList<T>::Concat(LinkedList<T> *list) const {
     try {
         if (list == nullptr)
-            throw "There is no list to contact!";
-        LinkedList* new_list = new LinkedList;
-        for (int i = 0; i < this->GetLength(); ++i) {
-            new_list->PushBack(this->Get(i));
+            throw "INVALID_LIST!";
+        LinkedList* nList = new LinkedList;
+        for (int i = 0; i < GetLength(); ++i) {
+            nList->PushBack(GetByIndex(i));
         }
         for (int i = 0; i < list->GetLength(); ++i) {
-            new_list->PushBack(list->Get(i));
+            nList->PushBack(list->GetByIndex(i));
         }
-        return new_list;
+        return nList;
     }  catch (const char *error) {
+        std::cout << error << std::endl;
+    }
+}
+
+template<typename T>
+T& LinkedList<T>::operator[](int index) {
+    try {
+        if (index <0 || index > length - 1) {
+            throw "INDEX_OUT_OF_RANGE!";
+        }
+        Node *temp = head;
+        for (int i=0; i<index; i++) {
+            temp = temp->pNext;
+        }
+        return temp->data;
+    } catch (const char *error) {
         std::cout << error << std::endl;
     }
 }
@@ -247,3 +284,4 @@ template<class T>
 LinkedList<T>::~LinkedList() {
     Clear();
 }
+

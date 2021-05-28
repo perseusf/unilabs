@@ -3,7 +3,6 @@
 
 #include "sequence.h"
 #include "linkedlist.h"
-#include "linkedlist.cpp"
 #include "iostream"
 
 template <class T>

@@ -8,24 +8,24 @@
 
 template <class T>
 class ArraySequence: public Sequence<T> {
-
 private:
-    DynamicArray<T> *_array;
+    DynamicArray<T> *array;
 
 public:
     //Constructors
     ArraySequence();
-    ArraySequence(T* data, int count);
-    ArraySequence(ArraySequence<T>& array);
+    ArraySequence(T* data, int length);
+    ArraySequence(ArraySequence<T> &data);
 
     //Decomposition
     T& GetFirst();
     T& GetLast();
     T& Get(int index);
     T& operator[] (const int index);
-    Sequence<T>* GetSubSequence(int start_index, int end_index) const;
+    Sequence<T>* GetSubSequence(int start, int end) const;
     int GetLength() const;
     void DelByIndex(int index);
+    void Resize(int length);
 
     //Operations
     void Append(const T& value);

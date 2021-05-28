@@ -243,7 +243,7 @@
 // Command-line utilities:
 //   GTEST_DECLARE_*()  - declares a flag.
 //   GTEST_DEFINE_*()   - defines a flag.
-//   GetInjectableArgvs() - returns the command line as a vector of strings.
+//   GetInjectableArgvs() - returns the command line as a Vector of strings.
 //
 // Environment variable utilities:
 //   GetEnv()             - gets the value of an environment variable.
@@ -1153,7 +1153,7 @@ GTEST_API_ std::vector<std::string> GetArgvs();
 #if GTEST_HAS_DEATH_TEST
 
 std::vector<std::string> GetInjectableArgvs();
-// Deprecated: pass the args vector by value instead.
+// Deprecated: pass the args Vector by value instead.
 void SetInjectableArgvs(const std::vector<std::string>* new_argvs);
 void SetInjectableArgvs(const std::vector<std::string>& new_argvs);
 void ClearInjectableArgvs();

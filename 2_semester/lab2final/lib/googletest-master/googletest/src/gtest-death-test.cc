@@ -843,7 +843,7 @@ class Arguments {
   Arguments() { args_.push_back(nullptr); }
 
   ~Arguments() {
-    for (std::vector<char*>::iterator i = args_.begin(); i != args_.end();
+    for (std::Vector<char*>::iterator i = args_.begin(); i != args_.end();
          ++i) {
       free(*i);
     }
@@ -853,8 +853,8 @@ class Arguments {
   }
 
   template <typename Str>
-  void AddArguments(const ::std::vector<Str>& arguments) {
-    for (typename ::std::vector<Str>::const_iterator i = arguments.begin();
+  void AddArguments(const ::std::Vector<Str>& arguments) {
+    for (typename ::std::Vector<Str>::const_iterator i = arguments.begin();
          i != arguments.end();
          ++i) {
       args_.insert(args_.end() - 1, posix::StrDup(i->c_str()));
@@ -869,7 +869,7 @@ class Arguments {
   }
 
  private:
-  std::vector<char*> args_;
+  std::Vector<char*> args_;
 };
 
 // Waits for the child in a death test to exit, returning its exit
@@ -1174,7 +1174,7 @@ class ExecDeathTest : public ForkingDeathTest {
   static ::std::vector<std::string> GetArgvsForDeathTestChildProcess() {
     ::std::vector<std::string> args = GetInjectableArgvs();
 #  if defined(GTEST_EXTRA_DEATH_TEST_COMMAND_LINE_ARGS_)
-    ::std::vector<std::string> extra_args =
+    ::std::Vector<std::string> extra_args =
         GTEST_EXTRA_DEATH_TEST_COMMAND_LINE_ARGS_();
     args.insert(args.end(), extra_args.begin(), extra_args.end());
 #  endif  // defined(GTEST_EXTRA_DEATH_TEST_COMMAND_LINE_ARGS_)

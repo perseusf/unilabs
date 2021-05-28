@@ -367,7 +367,7 @@ uint32_t Random::Generate(uint32_t range) {
 // Google Test before calling RUN_ALL_TESTS().
 static bool GTestIsInitialized() { return GetArgvs().size() > 0; }
 
-// Iterates over a vector of TestSuites, keeping a running sum of the
+// Iterates over a Vector of TestSuites, keeping a running sum of the
 // results of calling a given int-returning method on each.
 // Returns the sum.
 static int SumOverTestSuiteList(const std::vector<TestSuite*>& case_list,
@@ -582,7 +582,7 @@ static ::std::vector<std::string> g_argvs;
   // GTEST_CUSTOM_GET_ARGVS_() may return a container of std::string or
   // ::string. This code converts it to the appropriate type.
   const auto& custom = GTEST_CUSTOM_GET_ARGVS_();
-  return ::std::vector<std::string>(custom.begin(), custom.end());
+  return ::std::Vector<std::string>(custom.begin(), custom.end());
 #else   // defined(GTEST_CUSTOM_GET_ARGVS_)
   return g_argvs;
 #endif  // defined(GTEST_CUSTOM_GET_ARGVS_)
@@ -2932,7 +2932,7 @@ int TestSuite::reportable_test_count() const {
   return CountIf(test_info_list_, TestReportable);
 }
 
-// Get the number of tests in this test suite that should run.
+// GetByIndex the number of tests in this test suite that should run.
 int TestSuite::test_to_run_count() const {
   return CountIf(test_info_list_, ShouldRunTest);
 }
@@ -4949,7 +4949,7 @@ std::string OsStackTraceGetter::CurrentStackTrace(int max_depth, int skip_count)
 
   max_depth = std::min(max_depth, kMaxStackTraceDepth);
 
-  std::vector<void*> raw_stack(max_depth);
+  std::Vector<void*> raw_stack(max_depth);
   // Skips the frames requested by the caller, plus this function.
   const int raw_stack_size =
       absl::GetStackTrace(&raw_stack[0], max_depth, skip_count + 1);

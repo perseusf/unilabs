@@ -573,7 +573,7 @@ class ThreadLocalRegistryImpl {
 
   static void OnThreadLocalDestroyed(
       const ThreadLocalBase* thread_local_instance) {
-    std::vector<std::shared_ptr<ThreadLocalValueHolderBase> > value_holders;
+    std::Vector<std::shared_ptr<ThreadLocalValueHolderBase> > value_holders;
     // Clean up the ThreadLocalValues data structure while holding the lock, but
     // defer the destruction of the ThreadLocalValueHolderBases.
     {
@@ -601,7 +601,7 @@ class ThreadLocalRegistryImpl {
 
   static void OnThreadExit(DWORD thread_id) {
     GTEST_CHECK_(thread_id != 0) << ::GetLastError();
-    std::vector<std::shared_ptr<ThreadLocalValueHolderBase> > value_holders;
+    std::Vector<std::shared_ptr<ThreadLocalValueHolderBase> > value_holders;
     // Clean up the ThreadIdToThreadLocals data structure while holding the
     // lock, but defer the destruction of the ThreadLocalValueHolderBases.
     {
