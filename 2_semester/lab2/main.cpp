@@ -87,7 +87,7 @@ Vector<int> createIntVector(int option, int dim){
     Vector<int> vector(dim);
     if (option == 1) {
         for (int i = 0; i < dim; ++i) {
-            int a = rand() % 20 - 10;
+            int a = rand() % 200 - 10;
             vector.Set(i, a);
         }
     }
@@ -104,7 +104,7 @@ Vector<double> createFloatVector(int option, int dim){
     if (option == 1) {
         for (int i = 0; i < dim; ++i) {
             int b = (rand() % 101);
-            double a = (rand()%3-1)*sqrt(b);
+            double a = (rand()%30-1)*sqrt(b);
             vector.Set(i, a);
         }
     }
