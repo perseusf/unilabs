@@ -12,6 +12,7 @@ private:
     Sequence<T> *data_;
     int dimension_;
 public:
+
     //constructors
     Vector();
     explicit Vector(int dimension);

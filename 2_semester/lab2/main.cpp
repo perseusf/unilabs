@@ -102,6 +102,7 @@ Vector<complex<int>> createComplexVector(int option, int dim){
     return vector;
 }
 
+
 int main() {
     srand(time(nullptr));
     int type, operation, input, closing, dim;
@@ -109,18 +110,14 @@ int main() {
         cout << "Integers, floats or complex numbers? (1, 2, 3)" << endl;
         cout << "Select: ";
         type = question(3);
-
         cout << endl <<"Addition, scalar multiplication, dot product or norm? (1, 2, 3, 4)" << endl;
         cout << "Select: ";
         operation = question(4);
-
         cout << endl << "Random or manually? (1, 2)" << endl;
         cout << "Select: ";
         input = question(2);
-
         cout << endl << "Enter dimension (length): ";
         dim = setDim();
-
         switch(operation) {
             case 1:
                 if (type == 1) {
