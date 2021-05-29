@@ -78,6 +78,7 @@ void ListSequence<T>::InsertAt(const T &data, int index) {
     list_->InsertAt(data, index);
 }
 
+
 template<class T>
 void ListSequence<T>::Set(int index, const T& data) {
     if (index < 0 || index > list_->GetLength())

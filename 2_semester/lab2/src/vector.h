@@ -6,6 +6,7 @@
 #include "arraysequence.h"
 #include "arraysequence.cpp"
 
+
 template<class T>
 class Vector {
 private:

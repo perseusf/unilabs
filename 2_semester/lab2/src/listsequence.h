@@ -6,6 +6,7 @@
 #include "linkedlist.cpp"
 #include "iostream"
 
+
 template <typename T>
 class ListSequence: public Sequence<T> {
 private:

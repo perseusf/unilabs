@@ -4,6 +4,7 @@
 #include "linkedlist.h"
 #include "dynamicarray.h"
 
+
 template<typename T>
 class Sequence {
 public:

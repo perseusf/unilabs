@@ -101,6 +101,7 @@ TEST(DoubleScalarMultiplication, test) {
     ASSERT_TRUE(value == dim);
 }
 
+
 TEST(ComplexScalarMultiplication, test) {
     int dim = 432;
     complex<int> compnumber(1, 1);
