@@ -49,63 +49,60 @@ void Vector<T>::Set(int index, T& value) {
         data_->Set(index, value);
 }
 
-
-
 template<class T>
-Vector<T> *Vector<T>::Addition(Vector<T>* v) {
-    if (v->dimension_ != this->dimension_)
+Vector<T> Vector<T>::Addition(Vector<T> v) {
+    if (v.dimension_ != dimension_)
         throw std::exception();
-    Vector<T> *VectorSum = new Vector<T> (dimension_);
+    Vector<T> VectorSum(dimension_);
     for (int i = 0; i < dimension_; ++i) {
-        T value = this->Get(i) + v->Get(i);
-        VectorSum->Set(i, value);
+        T value = Get(i) + v.Get(i);
+        VectorSum.Set(i, value);
     }
     return VectorSum;
 }
 
 template<class T>
-Vector<T> *Vector<T>::Subtraction(Vector<T> *v) {
-    if (v->dimension_ != this->dimension_)
+Vector<T> Vector<T>::Subtraction(Vector<T> v) {
+    if (v.dimension_ != dimension_)
         throw std::exception();
-    Vector<T> *VectorDiff = new Vector<T> (dimension_);
+    Vector<T> VectorDiff(dimension_);
     for (int i = 0; i < dimension_; ++i) {
-        T value = this->Get(i) - v->Get(i);
-        VectorDiff->Set(i, value);
+        T value = Get(i) - v.Get(i);
+        VectorDiff.Set(i, value);
     }
     return VectorDiff;
 }
 
 template<class T>
-Vector<T> *Vector<T>::ScalarMultiplication(T& scalar) {
-    Vector<T> *MultipliedVector = new Vector<T> (dimension_);
+Vector<T> Vector<T>::ScalarMultiplication(T number) {
+    Vector<T> MultipliedVector(dimension_);
     for (int i = 0; i < dimension_; ++i) {
-        T value = this->Get(i) * scalar;
-        MultipliedVector->Set(i, value);
+        T value = Get(i) * number;
+        MultipliedVector.Set(i, value);
     }
     return MultipliedVector;
 }
 
 template<class T>
-T& Vector<T>::DotProduct(Vector<T>* v) {
-    if (v->dimension_ != this->dimension_)
+T Vector<T>::DotProduct(Vector<T> vector) {
+    if (vector.dimension_ != dimension_)
         throw std::exception();
-    T result = this->Get(0) * v->Get(0);
+    T result = Get(0) * vector.Get(0);
     for (int i = 1; i < dimension_; ++i) {
-        result = result + this->Get(i) * v->Get(i);
+        result = result + Get(i) * vector.Get(i);
     }
-    T& Prod = result;
-    return Prod;
+    return result;
 }
 
 template<class T>
 double Vector<T>::Norm() {
     double value = fabs(this->Get(0));
-    double sqNorm = value * value;
+    double norm_squared = value * value;
     for (int i = 1; i < dimension_; ++i) {
         value = fabs(this->Get(i));
-        sqNorm += value * value;
+        norm_squared += value * value;
     }
-    return sqrt(sqNorm);
+    return sqrt(norm_squared);
 }
 
 template<class T>
@@ -116,14 +113,14 @@ Vector<T> &Vector<T>:: operator = (Vector<T> *vector) {
 
 template<class T>
 std::ostream& operator << (std::ostream &out, const Vector<T> &v) {
-    std::cout << "{ ";
+    std::cout << "( ";
     for (int i = 0; i < v.dimension_; ++i) {
         out << (*v.data_)[i];
         if (i == v.dimension_ - 1)
             break;
         out << ", ";
     }
-    std::cout << " }";
+    std::cout << " )";
     return out;
 }
 

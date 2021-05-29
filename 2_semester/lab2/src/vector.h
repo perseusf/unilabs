@@ -30,10 +30,10 @@ public:
     friend std::ostream& operator <<(std::ostream &out, const Vector<W> &v);
 
     //some math
-    Vector<T> *Addition(Vector<T>* v);
-    Vector<T> *Subtraction(Vector<T>* v);
-    Vector<T> *ScalarMultiplication(T& scalar);
-    T &DotProduct(Vector<T>* v);
+    Vector<T> Addition(Vector<T> v);
+    Vector<T> Subtraction(Vector<T> v);
+    Vector<T> ScalarMultiplication(T number);
+    T DotProduct(Vector<T> vector);
     double Norm();
 
     //destructor
