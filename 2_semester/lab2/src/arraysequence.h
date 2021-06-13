@@ -11,7 +11,6 @@ class ArraySequence: public Sequence<T> {
 private:
     DynamicArray<T> *array_;
 
-
 public:
     //constructors
     ArraySequence();

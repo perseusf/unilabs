@@ -3,8 +3,6 @@
 #include <cmath>
 //основан на linked list
 
-
-
 template<class T>
 Vector<T>::Vector() {
     data_ = (Sequence<T>*) new ListSequence<T>();

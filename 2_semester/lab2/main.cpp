@@ -102,7 +102,6 @@ Vector<complex<int>> createComplexVector(int option, int dim){
     return vector;
 }
 
-
 int main() {
     srand(time(nullptr));
     int type, operation, input, closing, dim;
@@ -194,7 +193,6 @@ int main() {
                     cout << "Vector1" << " = " << Vector1 << endl << endl;
                     Vector<complex<int>> Vector2 = createComplexVector(input, dim);
                     cout << "Vector2" << " = " << Vector2 << endl << endl;
-                    cout << "У меня не получилось скалярное произведение для комплексных (ответ не тот)" <<endl;
                     cout << "(Vector1, Vector2) = " << Vector1.DotProduct(Vector2) << endl << endl;
                 }
                 break;

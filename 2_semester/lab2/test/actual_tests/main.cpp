@@ -8,24 +8,26 @@ using namespace std;
 
 TEST(IntAddition, test) {
     int dim = 0;
-    int value = 0;
     Vector<int> Vector1(dim);
     Vector<int> Vector2(dim);
     for (int i = 0; i < dim; i++) {
-        Vector1.Set(i, i);
-        int a = 10 * i * i;
-        Vector2.Set(i, a);
+        int b = i;
+        Vector2.Set(i, b);
+        int a = 100 * i;
+        Vector1.Set(i, a);
     }
-    Vector<int> Vector3(Vector2);
+    Vector<int> Vector3(dim);
+    Vector3 = Vector1.Addition(Vector2);
+    int value = 0;
     for (int i = 0; i < dim; i++) {
-        if (Vector3.Get(i) == i + 10 * i * i)
+        if (Vector3.Get(i) == (i + (100 * i)))
             value++;
     }
     ASSERT_TRUE(value == dim);
 }
 
 TEST(DoubleAddition, test) {
-    int dim = 3;
+    int dim = 0;
     Vector<double> Vector1(dim);
     Vector<double> Vector2(dim);
     for (int i = 0; i < dim; ++i) {
@@ -35,7 +37,7 @@ TEST(DoubleAddition, test) {
         Vector2.Set(i, b);
     }
     Vector<double> Vector3(dim);
-    Vector3 = Vector1.Addition(&Vector2);
+    Vector3 = Vector1.Addition(Vector2);
     int value = 0;
     for (int i = 0; i < dim; ++i) {
         if (Vector3.Get(i) == i + 100 * i)
@@ -55,7 +57,7 @@ TEST(ComplexAddition, test) {
         Vector2.Set(i, b);
     }
     Vector<complex<int>> Vector3(dim);
-    Vector3 = Vector1.Addition(&Vector2);
+    Vector3 = Vector1.Addition(Vector2);
     int value = 0;
     for (int i = 0; i < dim; ++i) {
         complex<int> c(11*i, 2*i + i*i);
@@ -130,7 +132,7 @@ TEST(IntDotProduct, test) {
         int a = i * i;
         Vector2.Set(i, a);
     }
-    int prod = Vector1.DotProduct(&Vector2);
+    int prod = Vector1.DotProduct(Vector2);
     int value = 0;
     for (int i = 0; i < dim; ++i) {
         value += i * i * i;
@@ -148,7 +150,7 @@ TEST(DoubleDotProduct, test) {
         double b = sqrt(2 * i);
         Vector2.Set(i, b);
     }
-    double prod = Vector1.DotProduct(&Vector2);
+    double prod = Vector1.DotProduct(Vector2);
     double count = 0;
     for (int i = 0; i < dim; ++i) {
         count += i*2;
@@ -166,7 +168,7 @@ TEST(ComplexDotProduct, test) {
         complex<int> b(i, i*i);
         Vector2.Set(i, b);
     }
-    complex<int> prod = Vector1.DotProduct(&Vector2);
+    complex<int> prod = Vector1.DotProduct(Vector2);
     complex<int> count;
     for (int i = 0; i < dim; ++i) {
         complex<int> c(i*i - 2*i*i*i, i*i*i + 2*i*i);

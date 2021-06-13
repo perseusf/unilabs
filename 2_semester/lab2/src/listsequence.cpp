@@ -32,7 +32,6 @@ T &ListSequence<T>::Get(int index) {
     if (index >= list_->GetLength() || index < 0)
         throw std::out_of_range ("Get(): INDEX_OUT_OF_RANGE");
     return list_->Get(index);
-
 }
 
 template<class T>

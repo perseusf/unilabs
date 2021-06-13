@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="gtest"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\test\;CMake Files\test\lib\;CMake Files\test\lib\googlemock\;CMake Files\test\lib\googlemock\cmake\;CMake Files\test\lib\googletest\;CMake Files\test\lib\googletest\cmake\;CMake Files\src\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest_main">
+				<Option output="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/lib/libgtest_maind.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/include"/>
+					<Add directory="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 gtest_main"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest_main/fast">
+				<Option output="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/lib/libgtest_maind.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/include"/>
+					<Add directory="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 gtest_main/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest">
+				<Option output="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/lib/libgtestd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/include"/>
+					<Add directory="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 gtest"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="gtest/fast">
+				<Option output="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/lib/libgtestd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/include"/>
+					<Add directory="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 gtest/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/cmake-build-debug/test/lib/googletest/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/src/gtest-all.cc">
+			<Option target="gtest"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/src/gtest_main.cc">
+			<Option target="gtest_main"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test\lib\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googlemock/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test\lib\googlemock\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googlemock/cmake/gmock.pc.in">
+			<Option virtualFolder="CMake Files\test\lib\googlemock\cmake\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googlemock/cmake/gmock_main.pc.in">
+			<Option virtualFolder="CMake Files\test\lib\googlemock\cmake\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test\lib\googletest\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/cmake/Config.cmake.in">
+			<Option virtualFolder="CMake Files\test\lib\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/cmake/gtest.pc.in">
+			<Option virtualFolder="CMake Files\test\lib\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/cmake/gtest_main.pc.in">
+			<Option virtualFolder="CMake Files\test\lib\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/test/lib/googletest/cmake/internal_utils.cmake">
+			<Option virtualFolder="CMake Files\test\lib\googletest\cmake\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/bzavo/Documents/01_LABS/labs/2_semester/lab2/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
