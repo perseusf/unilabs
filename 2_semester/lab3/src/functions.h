@@ -139,7 +139,7 @@ void testIntUnionSet(int n) {
     auto end_time = chrono::steady_clock::now();
     resulttime = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
 
-    cout << "Union time: " << resulttime << " milliseconds." << endl << endl;
+    cout << "Int union time: " << resulttime << " milliseconds." << endl << endl;
 }
 
 void testDoubleUnionSet(int n) {
@@ -157,7 +157,7 @@ void testDoubleUnionSet(int n) {
     auto end_time = chrono::steady_clock::now();
     resulttime = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
 
-    cout << "Union time: " << resulttime << " milliseconds." << endl << endl;
+    cout << "Double union time: " << resulttime << " milliseconds." << endl << endl;
 }
 
 void testIntComplementSet(int n) {
@@ -175,7 +175,7 @@ void testIntComplementSet(int n) {
     auto end_time = chrono::steady_clock::now();
     resulttime = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
 
-    cout << "Union time: " << resulttime << " milliseconds." << endl << endl;
+    cout << "Int complement time: " << resulttime << " milliseconds." << endl << endl;
 }
 
 void testDoubleComplementSet(int n) {
@@ -193,7 +193,7 @@ void testDoubleComplementSet(int n) {
     auto end_time = chrono::steady_clock::now();
     resulttime = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
 
-    cout << "Union time: " << resulttime << " milliseconds." << endl << endl;
+    cout << "Double complement time: " << resulttime << " milliseconds." << endl << endl;
 }
 
 void testIntIntersectionSet(int n) {
@@ -211,7 +211,7 @@ void testIntIntersectionSet(int n) {
     auto end_time = chrono::steady_clock::now();
     resulttime = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
 
-    cout << "Union time: " << resulttime << " milliseconds." << endl << endl;
+    cout << "Int intersection time: " << resulttime << " milliseconds." << endl << endl;
 }
 
 void testDoubleIntersectionSet(int n) {
@@ -229,7 +229,7 @@ void testDoubleIntersectionSet(int n) {
     auto end_time = chrono::steady_clock::now();
     resulttime = chrono::duration_cast<chrono::milliseconds>(end_time - start_time).count();
 
-    cout << "Union time: " << resulttime << " milliseconds." << endl << endl;
+    cout << "Double intersection time: " << resulttime << " milliseconds." << endl << endl;
 }
 
 
