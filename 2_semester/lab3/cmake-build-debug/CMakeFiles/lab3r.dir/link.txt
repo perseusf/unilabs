@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/lab3r.dir/main.cpp.o CMakeFiles/lab3r.dir/src/set.cpp.o -o lab3r 

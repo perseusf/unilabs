@@ -1,0 +1,12 @@
+set(SOURCES
+        main.cpp
+        arraysequence.h
+        dynamicarray.h
+        linkedlist.h
+        listsequence.h
+        vector.h
+        sequence.h
+        functions.h
+        heap.h
+        set.h
+        )

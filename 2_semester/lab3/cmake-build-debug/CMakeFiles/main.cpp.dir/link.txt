@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic CMakeFiles/main.cpp.dir/src/arraysequence.cpp.o -o main.cpp 

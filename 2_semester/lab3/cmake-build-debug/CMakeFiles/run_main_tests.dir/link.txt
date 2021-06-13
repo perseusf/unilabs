@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/run_main_tests.dir/test/actual_tests/main.cpp.o -o run_main_tests  lib/libgtestd.a lib/libgtest_maind.a lib/libgmockd.a lib/libgmock_maind.a lib/libgmockd.a lib/libgtestd.a -lpthread 
