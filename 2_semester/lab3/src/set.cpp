@@ -75,18 +75,6 @@ bool Set<T>::operator==(const Set<T> &set) {
 }
 
 template<class T>
-bool Set<T>::operator!=(const Set<T> &set) {
-    int setlen = set.GetSize();
-    if (GetSize() != setlen)
-        return true;
-    for (int i = 0; i < GetSize(); ++i) {
-        if (!Find((*set.data_)[i]))
-            return true;
-    }
-    return false;
-}
-
-template<class T>
 Set<T> Set<T>::operator+(const Set<T> &set) {
     int setlen = set.GetSize();
     Set<T> Union(*data_);

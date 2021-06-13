@@ -25,7 +25,6 @@ public:
 
     //operators and operations
     bool operator==(const Set<T> &set);
-    bool operator!=(const Set<T> &set);
     template<class U>
     friend std::ostream& operator<<(std::ostream &out, const Set<U> &settoprint);
     Set<T> operator+(const Set<T> &set);
