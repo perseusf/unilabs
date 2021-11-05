@@ -25,6 +25,25 @@ void generateRandom(Sequence<T> *seq, int seq_len, int maxValue) {
 }
 
 template <class T>
+void generateRandomDouble(Sequence<T> *seq, int seq_len, int maxValue) {
+    srand(time(nullptr));
+    for (int i = 0; i < seq_len; i++) {
+        double a = (double)std::rand() / maxValue;
+        seq->Append(a);
+    }
+}
+
+template <class T>
+void generateRandomChar(Sequence<T> *seq, int seq_len) {
+    srand(time(nullptr));
+    for (int i = 0; i < seq_len; i++) {
+        int r = std::rand() % 26;
+        char a = 'a' + r;
+        seq->Append(a);
+    }
+}
+
+template <class T>
 void generateWorstCase(Sequence<T> *seq, int seq_len) {
     for (int i = 0; i < seq_len; i++) {
         seq->Append(seq_len - i - 1);
@@ -35,6 +54,19 @@ template <class T>
 void generateBestCase(Sequence<T> *seq, int seq_len) {
     for (int i = 0; i < seq_len; ++i) {
         seq->Append(i);
+    }
+}
+
+template <class T>
+bool isSorted(Sequence<T>* seq, int (*cmp)(T, T)) {
+    int counter = 0;
+    for (int i = 0; i < seq->GetLength() - 1; i++) {
+        if (cmp((*seq)[i], (*seq)[i + 1]) <= 0) counter++;
+    }
+    if (counter == (seq->GetLength() - 1)) {
+        return true;
+    } else {
+        return false;
     }
 }
 
