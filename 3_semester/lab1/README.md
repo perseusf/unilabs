@@ -18,6 +18,40 @@
 1.	Лучший случай (все элементы последовательности уже стоят по порядку = отсортированны)
 2.	Обычная генерация последователости (элементы стоят в случайном порядке)
 3.	Худший случай (все элементы последовательности стоят в поряде убывания = отсортированны в обратном порядке)
+
 Построены графики зависимости времени сортировки от количества элементов последовательности для каждого способа сортировки. 
 Каждое полученное время сортировки усреднялось по 10 значениям как среднее арифметическое.
 
+
+1. Сортировка методом пузырька.
+
+![arraybubble](https://user-images.githubusercontent.com/71033927/140659956-a87df981-58d1-4ac9-b9d9-c0da6274ae5d.png)
+![listbubble](https://user-images.githubusercontent.com/71033927/140659964-0206b337-ad7a-4402-83b7-9e0cc0418e09.png)
+
+2. Сортировка методом простых вставок.
+
+![arrayinsertion](https://user-images.githubusercontent.com/71033927/140659994-9613f28b-6bc9-4905-9613-a8667144de67.png)
+![listinsertion](https://user-images.githubusercontent.com/71033927/140659995-cecfd137-cbd2-40e9-a313-25fe1e5ea589.png)
+
+3. Сортировка методом простого выбора.
+
+![arrayselection](https://user-images.githubusercontent.com/71033927/140660013-cb2d1ce1-776c-417f-b31a-e225a4455d40.png)
+![listselection](https://user-images.githubusercontent.com/71033927/140660016-0785eaad-bb07-4d88-96fe-9e41b069e306.png)
+
+4. Сортировка методом слияния.
+
+![arraymerge](https://user-images.githubusercontent.com/71033927/140660036-8efe1081-b8f0-4b81-9a6c-c9ef837e1417.png)
+![listmerge](https://user-images.githubusercontent.com/71033927/140660040-3090e530-73d8-4355-a8f9-70d72216d5eb.png)
+
+5. Быстрая сортировка.
+
+![arrayquick](https://user-images.githubusercontent.com/71033927/140660056-fd012faa-bd92-450f-ae02-8b19515000ba.png)
+![listquick](https://user-images.githubusercontent.com/71033927/140660057-4bcf3d8e-24a3-4609-84ed-92dcf0f48bac.png)
+
+6. Сортировка Шелла.
+
+![arrayshell](https://user-images.githubusercontent.com/71033927/140660076-93024c52-639a-404b-9b7c-f24cbea9896b.png)
+![listshell](https://user-images.githubusercontent.com/71033927/140660078-8ff90a80-be02-4527-bb0b-bd59081a18d5.png)
+
+
+Таким образом, наилучшее среднее время сортировки показал алгоритм сортировки Шелла. 
