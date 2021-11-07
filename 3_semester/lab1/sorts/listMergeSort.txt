@@ -1,0 +1,4 @@
+Unsorted array: 7479 8091 129 1283 7917 3113 1258 2782 7320 870 
+Sorted array: 129 870 1258 1283 2782 3113 7320 7479 7917 8091 
+Number of elements: 10
+Time: 14 microseconds

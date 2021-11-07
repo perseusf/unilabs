@@ -1,0 +1,4 @@
+Unsorted array: 1460 4207 6864 8684 2728 6012 2469 5769 5755 4457 
+Sorted array: 1460 2469 2728 4207 4457 5755 5769 6012 6864 8684 
+Number of elements: 10
+Time: 3 microseconds

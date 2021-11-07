@@ -1,0 +1,4 @@
+Unsorted array: 7967 4177 1576 595 4774 1469 2017 7927 4913 6107 
+Sorted array: 595 1469 1576 2017 4177 4774 4913 6107 7927 7967 
+Number of elements: 10
+Time: 11 microseconds

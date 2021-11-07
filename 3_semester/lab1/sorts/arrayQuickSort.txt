@@ -1,0 +1,4 @@
+Unsorted array: 7763 4482 3929 6085 7278 2326 6459 5598 3770 6106 
+Sorted array: 2326 3770 3929 4482 5598 6085 6106 6459 7278 7763 
+Number of elements: 10
+Time: 4 microseconds
