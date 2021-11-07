@@ -90,33 +90,26 @@ Sequence<T>* MergeSort<T>::Sort(Sequence<T> *seq, int (*cmp)(T, T)) {
 }
 
 template <class T>
-int QuickSort<T>::partition(Sequence<T> *seq, int low, int high, int (*cmp)(T, T)) {
-    int pivot = (*seq)[high]; // pivot
-    int i = (low - 1); // Index of smaller element
-
-    for (int j = low; j <= high - 1; j++) {
-        // If current element is smaller than or
-        // equal to pivot
+int QuickSort<T>::split(Sequence<T> *seq, int start, int end, int (*cmp)(T, T)) {
+    int pivot = (*seq)[end]; //с одинаковой вероятностью, что элемент будет стоять в середине
+    int i = (start - 1); //индекс элемента который больше пивота, отслеживаем
+    for (int j = start; j <= end - 1; j++) {
         if (cmp((*seq)[j], pivot) <= 0) {
-            i++; // increment index of smaller element
+            i++;
             seq->Swap((*seq)[i], (*seq)[j]);
         }
     }
-    seq->Swap((*seq)[i + 1], (*seq)[high]);
+    //меняем пивот(end) с первым большим элементом(i+1)
+    seq->Swap((*seq)[i + 1], (*seq)[end]);
     return (i + 1);
 }
 
 template <class T>
-void QuickSort<T>::quicksort(Sequence<T> *seq, int low, int high, int (*cmp)(T, T)) {
-    if (low < high) {
-        /* pi is partitioning index, arr[p] is now
-           at right place */
-        int pi = partition(seq, low, high, cmp);
-
-        // Separately sort elements before
-        // partition and after partition
-        quicksort(seq, low, pi - 1, cmp);
-        quicksort(seq, pi + 1, high, cmp);
+void QuickSort<T>::quicksort(Sequence<T> *seq, int start, int end, int (*cmp)(T, T)) {
+    if (start < end) {
+        int pivot = split(seq, start, end, cmp);
+        quicksort(seq, start, pivot - 1, cmp); //левая часть
+        quicksort(seq, pivot + 1, end, cmp); //правая часть
     }
 }
 
@@ -130,12 +123,15 @@ template <class T>
 Sequence<T>* ShellSort<T>::Sort(Sequence<T> *seq, int (*cmp)(T, T)) {
     int tmp, k;
     int seq_len = seq->GetLength();
-    for (int step = seq_len / 2; step > 0; step /= 2){
-        for (int i = step; i < seq_len; i++) {
+    //рассматриваем элементы на расстоянии gap друг от друга и уменьшаем его вдвое каждый раз
+    for (int gap = seq_len / 2; gap > 0; gap /= 2){
+        for (int i = gap; i < seq_len; i++) {
+            //копируем в tmp текущий элемент
             tmp = (*seq)[i];
-            for (k = i; k >= step; k -= step) {
-                if (tmp < (*seq)[k - step])
-                    (*seq)[k] = (*seq)[k - step];
+            for (k = i; k >= gap; k -= gap) {
+                //сравниваем элементы на расстоянии gap друг от друга
+                if (cmp(tmp, (*seq)[k - gap]) < 0)
+                    (*seq)[k] = (*seq)[k - gap];
                 else
                     break;
             }

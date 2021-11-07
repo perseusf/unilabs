@@ -39,8 +39,8 @@ public:
 template <typename T>
 class QuickSort : public ISorter<T> {
 private:
-    int partition (Sequence<T> *seq, int low, int high, int (*cmp)(T, T));
-    void quicksort(Sequence<T> *seq, int low, int high, int (*cmp)(T, T));
+    int split (Sequence<T> *seq, int start, int end, int (*cmp)(T, T));
+    void quicksort(Sequence<T> *seq, int start, int end, int (*cmp)(T, T));
 public:
     Sequence<T>* Sort(Sequence<T> *seq, int (*cmp)(T, T));
 };

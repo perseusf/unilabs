@@ -57,7 +57,7 @@
 #   define GTEST_OS_WINDOWS_PHONE 1
 #   define GTEST_OS_WINDOWS_TV_TITLE 1
 #  else
-    // WINAPI_FAMILY defined but no known partition matched.
+    // WINAPI_FAMILY defined but no known split matched.
     // Default to desktop.
 #   define GTEST_OS_WINDOWS_DESKTOP 1
 #  endif
